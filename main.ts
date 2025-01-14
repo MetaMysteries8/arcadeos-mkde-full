@@ -5,6 +5,21 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const loadr = StatusBarKind.create()
 }
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (MOUSEPOINTER.overlapsWith(mlwre)) {
+        MOUSEPOINTER.sayText("app.default.mlwre", 1000, false)
+    } else {
+        if (MOUSEPOINTER.overlapsWith(Shutdown)) {
+            MOUSEPOINTER.sayText("app.system.shutdown", 1000, false)
+        } else {
+            if (MOUSEPOINTER.overlapsWith(bkganimicon)) {
+                MOUSEPOINTER.sayText("app.system.bkganimtgle", 1000, false)
+            } else {
+                MOUSEPOINTER.sayText("No App Detected", 1000, false)
+            }
+        }
+    }
+})
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     if (MOUSEPOINTER.overlapsWith(bkganimicon)) {
         if (animbkg == 1) {
