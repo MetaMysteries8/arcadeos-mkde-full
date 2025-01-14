@@ -659,8 +659,8 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         console.log("Shutdown Sound Prepared")
         game.setGameOverMessage(true, "Shut Down Successful!")
         console.log("Shutdown Message prepared")
-        game.gameOver(true)
         console.log("System Shutdown Successful")
+        game.gameOver(true)
     }
     if (mySprite2.overlapsWith(mlwre)) {
         console.log("app.system.shutdown Icon Movement Active")
@@ -707,7 +707,7 @@ console.log("Loading Bar Outline Created")
 statusbar.setBarBorder(1, 1)
 pause(500)
 console.log("Loading Bar Maximum Set")
-statusbar.max += 100
+statusbar.max = 100
 pause(100)
 console.log("Transparent Loading Bar Placement Sprite Created")
 let load = sprites.create(assets.image`Loadinthing`, SpriteKind.Player)
