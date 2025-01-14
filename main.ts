@@ -682,17 +682,14 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         game.gameOver(true)
     }
     if (MOUSEPOINTER.overlapsWith(mlwre)) {
-        console.log("app.system.shutdown Icon Movement Active")
+        console.log("Uh Oh...")
         Shutdown.setVelocity(randint(-50, 50), randint(-50, 50))
-        console.log("app.system.bkganimtgle Icon Movement Active")
         bkganimicon.setVelocity(randint(-50, 50), randint(-50, 50))
-        console.log("app.default.mlwre Icon Movement Active")
+        targetnotthestore.setVelocity(randint(-50, 50), randint(-50, 50))
         mlwre.setVelocity(randint(-50, 50), randint(-50, 50))
-        console.log("app.default.mlwre Icon Movement Boundaries Set")
         mlwre.setBounceOnWall(true)
-        console.log("app.system.bkganimtgle Icon Movement Boundaries Set")
+        targetnotthestore.setBounceOnWall(true)
         bkganimicon.setBounceOnWall(true)
-        console.log("app.system.shutdown Icon Movement Boundaries Set")
         Shutdown.setBounceOnWall(true)
         console.log("Payload Successful")
     }
