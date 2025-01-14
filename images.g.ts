@@ -1049,6 +1049,44 @@ ff8ffffffff88ffffffffffff8fff8ff
 fffffffffffff8ffffffffff88fff8ff
 ffffffffffffffffffffffffffffffff
 `;
+            case "image16":
+            case "3dDesktop":return img`
+d d d d d d d d d d d d d d d d 
+d 2 2 2 2 f 2 2 2 f f f f f f d 
+d f f f 2 f 2 f f 2 f f f f f d 
+d f f f 2 f 2 f f 2 f f f f f d 
+d 2 2 2 2 f 2 f f 2 f f f f f d 
+d f f f 2 f 2 f f 2 f f f f f d 
+d f f f 2 f 2 f f 2 f f f f f d 
+d 2 2 2 2 f 2 2 2 f f f f f f d 
+d f f f f f f f f f f f f f f d 
+d 2 f f f 2 f f f f f f f f f d 
+d 2 2 f 2 2 f 2 2 2 f 2 2 2 f d 
+d 2 f 2 f 2 f 2 f 2 f 2 f 2 f d 
+d 2 f f f 2 f 2 2 2 f 2 2 2 f d 
+d 2 f f f 2 f 2 f 2 f 2 f f f d 
+d 2 f f f 2 f 2 f 2 f 2 f f f d 
+d d d d d d d d d d d d d d d d 
+`;
+            case "image17":
+            case "TargetNotTheStore":return img`
+d d d d d d d d d d d d d d d d 
+d 2 2 2 2 2 2 2 2 2 2 2 2 2 2 d 
+d 2 1 1 1 1 1 1 1 1 1 1 1 1 2 d 
+d 2 1 8 8 8 8 8 8 8 8 8 8 1 2 d 
+d 2 1 8 2 2 2 2 2 2 2 2 8 1 2 d 
+d 2 1 8 2 1 1 1 1 1 1 2 8 1 2 d 
+d 2 1 8 2 1 8 8 8 8 1 2 8 1 2 d 
+d 2 1 8 2 1 8 2 2 8 1 2 8 1 2 d 
+d 2 1 8 2 1 8 2 2 8 1 2 8 1 2 d 
+d 2 1 8 2 1 8 8 8 8 1 2 8 1 2 d 
+d 2 1 8 2 1 1 1 1 1 1 2 8 1 2 d 
+d 2 1 8 2 2 2 2 2 2 2 2 8 1 2 d 
+d 2 1 8 8 8 8 8 8 8 8 8 8 1 2 d 
+d 2 1 1 1 1 1 1 1 1 1 1 1 1 2 d 
+d 2 2 2 2 2 2 2 2 2 2 2 2 2 2 d 
+d d d d d d d d d d d d d d d d 
+`;
         }
         return null;
     })

@@ -7,15 +7,19 @@ namespace StatusBarKind {
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (MOUSEPOINTER.overlapsWith(mlwre)) {
-        MOUSEPOINTER.sayText("app.default.mlwre", 1000, false)
+        MOUSEPOINTER.sayText("mlwre", 5000, false)
     } else {
         if (MOUSEPOINTER.overlapsWith(Shutdown)) {
-            MOUSEPOINTER.sayText("app.system.shutdown", 1000, false)
+            MOUSEPOINTER.sayText("shutdown", 5000, false)
         } else {
             if (MOUSEPOINTER.overlapsWith(bkganimicon)) {
-                MOUSEPOINTER.sayText("app.system.bkganimtgle", 1000, false)
+                MOUSEPOINTER.sayText("bkganimtgle", 5000, false)
             } else {
-                MOUSEPOINTER.sayText("No App Detected", 1000, false)
+                if (MOUSEPOINTER.overlapsWith(targetnotthestore)) {
+                    MOUSEPOINTER.sayText("targetapp", 5000, false)
+                } else {
+                    MOUSEPOINTER.sayText("No App Detected", 5000, false)
+                }
             }
         }
     }
@@ -692,8 +696,24 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         Shutdown.setBounceOnWall(true)
         console.log("Payload Successful")
     }
+    if (MOUSEPOINTER.overlapsWith(targetnotthestore)) {
+        console.log("Adafruit Mode Activated")
+        color.startFadeFromCurrent(color.GrayScale, 5000)
+        color.pauseUntilFadeDone()
+        color.setPalette(
+        color.Black
+        )
+        pause(5000)
+        color.setPalette(
+        color.White
+        )
+        pause(5000)
+        color.startFadeFromCurrent(color.Adafruit)
+        MOUSEPOINTER.sayText("Adafruit Mode Activated", 5000, false)
+    }
 })
 let MOUSEPOINTER: Sprite = null
+let targetnotthestore: Sprite = null
 let mlwre: Sprite = null
 let Shutdown: Sprite = null
 let bkganimicon: Sprite = null
@@ -815,6 +835,12 @@ mlwre = sprites.create(assets.image`mlwre`, SpriteKind.AppIcon)
 pause(100)
 console.log("app.default.mlwre Icon Placed")
 mlwre.setPosition(20, 40)
+pause(100)
+console.log("app.targetnotthestore.app Icon Created")
+targetnotthestore = sprites.create(assets.image`TargetNotTheStore`, SpriteKind.AppIcon)
+pause(100)
+console.log("app.targetnotthestore.targetapp Icon Placed")
+targetnotthestore.setPosition(20, 60)
 pause(100)
 console.log("Cursor Loaded")
 MOUSEPOINTER = sprites.create(assets.image`mouse pointer`, SpriteKind.Player)
