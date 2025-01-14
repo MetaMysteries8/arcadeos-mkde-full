@@ -6,7 +6,7 @@ namespace StatusBarKind {
     export const loadr = StatusBarKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
-    if (mySprite2.overlapsWith(bkganimicon)) {
+    if (MOUSEPOINTER.overlapsWith(bkganimicon)) {
         if (animbkg == 1) {
             console.log("Un-Loading Animated Background")
             scroller.setLayerImage(scroller.BackgroundLayer.Layer0, img`
@@ -652,17 +652,17 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             console.log("Animated Background Re-Loaded")
         }
     }
-    if (mySprite2.overlapsWith(Shutdown)) {
+    if (MOUSEPOINTER.overlapsWith(Shutdown)) {
         game.setGameOverEffect(true, effects.melt)
-        console.log("Shutdown Effect Prepared")
+        console.log("Ending Processes...")
         game.setGameOverPlayable(true, music.melodyPlayable(music.smallCrash), false)
-        console.log("Shutdown Sound Prepared")
-        game.setGameOverMessage(true, "Shut Down Successful!")
-        console.log("Shutdown Message prepared")
+        console.log("Halting")
+        game.setGameOverMessage(true, "System Shut Down...")
+        console.log("Shutting Down")
         console.log("System Shutdown Successful")
         game.gameOver(true)
     }
-    if (mySprite2.overlapsWith(mlwre)) {
+    if (MOUSEPOINTER.overlapsWith(mlwre)) {
         console.log("app.system.shutdown Icon Movement Active")
         Shutdown.setVelocity(randint(-50, 50), randint(-50, 50))
         console.log("app.system.bkganimtgle Icon Movement Active")
@@ -678,21 +678,30 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         console.log("Payload Successful")
     }
 })
-let mySprite2: Sprite = null
+let MOUSEPOINTER: Sprite = null
 let mlwre: Sprite = null
 let Shutdown: Sprite = null
 let bkganimicon: Sprite = null
 let animbkg = 0
+music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
+pause(5000)
 console.log("Startup...")
-pause(1000)
+let BIOSLOGO = sprites.create(assets.image`BIOS`, SpriteKind.logo)
+BIOSLOGO.scale = 3
+music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.UntilDone)
+music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
+pause(5000)
+music.play(music.createSoundEffect(WaveShape.Sine, 1627, 1627, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+sprites.destroy(BIOSLOGO)
+pause(5000)
 console.log("Startup Sound Launched")
 music.play(music.createSong(assets.song`startup`), music.PlaybackMode.InBackground)
 pause(100)
 console.log("Logo Image Loaded")
-let mySprite = sprites.create(assets.image`oslogo`, SpriteKind.logo)
+let OSLOGO = sprites.create(assets.image`oslogo`, SpriteKind.logo)
 pause(500)
 console.log("Logo Image Rescaled")
-mySprite.scale = 0.5
+OSLOGO.scale = 0.5
 pause(100)
 console.log("Loading Bar Created")
 let statusbar = statusbars.create(100, 10, StatusBarKind.loadr)
@@ -727,10 +736,10 @@ console.log("Loading Complete, Startup Finisher Music Loaded")
 music.play(music.createSong(assets.song`shutdown`), music.PlaybackMode.InBackground)
 pause(100)
 console.log("Logo Image Unscaled")
-mySprite.scale = 1
+OSLOGO.scale = 1
 pause(200)
 console.log("Logo Image Unloaded")
-sprites.destroy(mySprite)
+sprites.destroy(OSLOGO)
 pause(100)
 console.log("Loading Bar Destroyed")
 sprites.destroy(statusbar)
@@ -793,14 +802,14 @@ console.log("app.default.mlwre Icon Placed")
 mlwre.setPosition(20, 40)
 pause(100)
 console.log("Cursor Loaded")
-mySprite2 = sprites.create(assets.image`mouse pointer`, SpriteKind.Player)
+MOUSEPOINTER = sprites.create(assets.image`mouse pointer`, SpriteKind.Player)
 pause(100)
 console.log("Cursor Boundaries Set")
-mySprite2.setStayInScreen(true)
+MOUSEPOINTER.setStayInScreen(true)
 pause(100)
 console.log("Cursor Size Set")
-mySprite2.scale = 0.5
+MOUSEPOINTER.scale = 0.5
 pause(100)
 console.log("Cursor Controls Active")
-controller.moveSprite(mySprite2, 100, 100)
+controller.moveSprite(MOUSEPOINTER, 100, 100)
 console.log("System Fully Loaded")

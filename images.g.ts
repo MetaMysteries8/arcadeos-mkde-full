@@ -1014,6 +1014,41 @@ d 2 f f 2 f f 2 2 2 2 2 2 2 2 d
 d f 2 2 2 f f f f f 2 f f f f d 
 d d d d d d d d d d d d d d d d 
 `;
+            case "image15":
+            case "BIOS":return img`
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+fffffff888888888888888888fffffff
+fffffff8ffffffffffffffff8fffffff
+fffffff8ffffffffffffffff8fffffff
+fffffff8ffffff8888ffffff8fffffff
+fffffff8ffffff8888ffffff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8f888888888888fff8fffffff
+fffffff8f8888888888fffff8fffffff
+fffffff8f8888888888fffff8fffffff
+fffffff8f8888888888fffff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8fff8888888888fff8fffffff
+fffffff8ffffffffffffffff8fffffff
+fffffff888888888888888888fffffff
+ffffffffffffffffffffffffffffffff
+ffff8fffffffffffffffffffffffffff
+ffff88ff8fff8888ffffffffffffffff
+fff888ff88f88ff8fffffffffff88fff
+fff8f8f888f8fffffffffffffff88fff
+fff8f888f8f8ffffffffffffff8f88ff
+fff8ff8ff8f8ffffff88888ff88ff8ff
+ff8fff8ff8f8fffffffffffff88888ff
+ff8ffffffff88ffffffffffff8fff8ff
+fffffffffffff8ffffffffff88fff8ff
+ffffffffffffffffffffffffffffffff
+`;
         }
         return null;
     })
