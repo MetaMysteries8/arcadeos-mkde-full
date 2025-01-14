@@ -1352,7 +1352,9 @@ function ShutdownSys () {
     color.originalPalette
     )
     story.printText("Good Night :)", 75, 75, 0, 15, story.TextSpeed.VerySlow)
-    pause(20000)
+    while (true) {
+        pause(20000)
+    }
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     story.showPlayerChoices("Shutdown", "Reboot", "Return")
