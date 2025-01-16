@@ -9,7 +9,8 @@
         "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
         "Color Fading": "github:jwunderl/pxt-color#v0.2.3",
         "sevenseg": "*",
-        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8"
+        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8",
+        "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0"
     },
     "files": [
         "main.blocks",

@@ -685,6 +685,14 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         bkganimicon.setBounceOnWall(true)
         SHUTDOWN.setBounceOnWall(true)
         console.log("Payload Successful")
+        blockSettings.writeNumber("broken", 1)
+        color.setPalette(
+        color.DIY
+        )
+        music.ringTone(880)
+        while (true) {
+            pause(100)
+        }
     }
     if (MOUSEPOINTER.overlapsWith(targetnotthestore)) {
         console.log("Adafruit Mode Activated")
@@ -1345,6 +1353,7 @@ function ShutdownSys () {
     pause(2000)
     sprites.destroy(statusbar)
     color.startFadeFromCurrent(color.Black, 5000)
+    blockSettings.writeNumber("DirtyBit", 0)
     color.pauseUntilFadeDone()
     effects.starField.startScreenEffect(10000)
     scene.setBackgroundColor(15)
@@ -1352,7 +1361,9 @@ function ShutdownSys () {
     color.originalPalette
     )
     story.printText("Good Night :)", 75, 75, 0, 15, story.TextSpeed.VerySlow)
-    pause(20000)
+    while (true) {
+        pause(20000)
+    }
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     story.showPlayerChoices("Shutdown", "Reboot", "Return")
@@ -2008,6 +2019,7 @@ function RebootSys () {
     statusbar.value += -1
     pause(2000)
     sprites.destroy(statusbar)
+    blockSettings.writeNumber("DirtyBit", 0)
     color.startFadeFromCurrent(color.Black, 5000)
     color.pauseUntilFadeDone()
     effects.starField.startScreenEffect(10000)
@@ -2026,8 +2038,13 @@ let SHUTDOWN: Sprite = null
 let bkganimicon: Sprite = null
 let animbkg = 0
 let statusbar: StatusBarSprite = null
+let mySprite: Sprite = null
 music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
 pause(5000)
+if (controller.left.isPressed()) {
+    story.printText("........................................................................................................................................................................................................................................................................................................................................................................", 75, 0, 15, 1, story.TextSpeed.VeryFast)
+    blockSettings.writeNumber("broken", 0)
+}
 console.log("Startup...")
 let BIOSLOGO = sprites.create(assets.image`BIOS`, SpriteKind.logo)
 BIOSLOGO.scale = 3
@@ -2035,9 +2052,33 @@ music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.UntilDone)
 music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
 pause(5000)
 music.play(music.createSoundEffect(WaveShape.Sine, 1627, 1627, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+if (blockSettings.readNumber("broken") == 1) {
+    music.play(music.createSoundEffect(WaveShape.Noise, 1596, 1365, 255, 0, 1000, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+    scene.setBackgroundColor(8)
+    mySprite = sprites.create(assets.image`Err`, SpriteKind.AppIcon)
+    story.printText("Error...", 10, 0, 15, 1, story.TextSpeed.VerySlow)
+    pause(10000)
+    game.reset()
+}
 sprites.destroy(BIOSLOGO)
 pause(5000)
+if (blockSettings.readNumber("DirtyBit") == 1) {
+    story.printText("Your device did not shut down correctly... Please Wait...", 75, 70, 15, 1, story.TextSpeed.VerySlow)
+    color.startFadeFromCurrent(color.White, 5000)
+    color.pauseUntilFadeDone()
+    color.startFadeFromCurrent(color.Black, 5000)
+    color.pauseUntilFadeDone()
+    color.setPalette(
+    color.originalPalette
+    )
+    blockSettings.writeNumber("DirtyBit", 0)
+    story.printText("We checked your system for corruptions and none were found!", 75, 70, 15, 1, story.TextSpeed.VerySlow)
+    story.printText("Please be more careful next time!", 75, 70, 15, 1, story.TextSpeed.VerySlow)
+    story.printText("Rebooting...", 75, 70, 15, 1, story.TextSpeed.VerySlow)
+    game.reset()
+}
 console.log("Startup Sound Launched")
+blockSettings.writeNumber("DirtyBit", 1)
 music.play(music.createSong(assets.song`startup`), music.PlaybackMode.InBackground)
 pause(100)
 console.log("Logo Image Loaded")
