@@ -2028,7 +2028,8 @@ let SHUTDOWN: Sprite = null
 let bkganimicon: Sprite = null
 let animbkg = 0
 let statusbar: StatusBarSprite = null
-music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.UntilDone)
+music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.InBackground)
+story.printText("Loading", 0, 0)
 pause(5000)
 console.log("Startup...")
 let BIOSLOGO = sprites.create(assets.image`BIOS`, SpriteKind.logo)
